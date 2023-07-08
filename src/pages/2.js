@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { NextSeo } from 'next-seo';
+
 // This page will show up at the route /mypage
 
 import {
@@ -12,7 +12,7 @@ import {
 import { useRouter } from 'next/router';
 import { PLASMIC } from '../../plasmic-init';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 // Statically fetch the data needed to render Plasmic pages or components.
 export const getStaticProps = async () => {
@@ -48,20 +48,14 @@ export default function MyPage(props) {
   const router = useRouter();
   const compMeta = props.plasmicData.entryCompMetas[0];
   return (
-    <>
-    <NextSeo title="Transatlantic Asset Management" description="t a m llc -  top-notch asset management services and innovative software solutions"/>
-    <div class="bg-white">
     <PlasmicRootProvider
       loader={PLASMIC}
-      prefetchedData={props.plasmicData}
-      prefetchedQueryData={props.queryCache}
-      pageParams={compMeta.params}
-      pageQuery={router.query}
+      // prefetchedData={props.plasmicData}
+      // prefetchedQueryData={props.queryCache}
+      // pageParams={compMeta.params}
+      // pageQuery={router.query}
     >
-      <PlasmicComponent component={compMeta.displayName} />
+      <PlasmicComponent component='Home' />
     </PlasmicRootProvider>
-    </div>
-    </>
-
   );
-}
+};
